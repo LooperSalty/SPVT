@@ -68,139 +68,16 @@ réduire les risques de bug ou d'augmenter l'efficacité des problème du au sit
 <br><br>
 <?php
 $bddPDO = new PDO('mysql:host=localhost;dbname=fenetre', 'root', ''); // connexion à la base de donnée (fenetre)
-
-
-?>
-
-
-<?php
-$verification = $data['pseudo'];
-$verification1 = $data['pseudo'];
-if ($verification1 == "michel" or "looper_salty" or "Ronflex") {
-    if ($verification == "looper_salty") {
-// On récupere les données de la fenêtre
-        $req = 'SELECT numero_de_serie, couleur, ouvert, fermer, alerte FROM fenetre_utilisateur LIMIT 0,3';
-        $result = $bddPDO->query($req);
-        if (!$result) {
-            echo "La récupération des données à rencontrée un problème! ou vous n'avez pas de fenêtre(s) ";
-        } else {
-            $nbre_fenetre = $result->rowCount();
-            ?>
-            <div class="align-content-center">
-                <h1>Vos fenêtre</h1>
-                <h2>Vous avez <?= $nbre_fenetre ?> à votre disposition</h2>
-                <table border="1">
-                    <tr>
-                        <th>Numéro_de_série</th>
-                        <th>couleur</th>
-                        <th>ouverture</th>
-                        <th>fermeture</th>
-                        <th>alerte</th>
-                    </tr>
-                    <?php
-
-                    while ($ligne = $result->fetch(PDO::FETCH_NUM)) {
-                        echo "<tr>";
-                        foreach ($ligne as $valeur) {
-                            echo "<td>$valeur</td>";
-                        }
-                        echo "</tr>";
-                    }
-                    ?>
-                </table>
-            </div>
-
-
-            <?php
-            $result->closeCursor();
-
-        }
-    } elseif ($verification == "Ronfelx") {
-// On récupere les données de la fenêtre
-        $req = 'SELECT numero_de_serie, couleur, ouvert, fermer, alerte FROM fenetre_utilisateur LIMIT 3,6';
-        $result = $bddPDO->query($req);
-        if (!$result) {
-            echo "La récupération des données à rencontrée un problème! ou vous n'avez pas de fenêtre(s) ";
-        } else {
-            $nbre_fenetre = $result->rowCount();
-            ?>
-            <div class="align-content-center">
-                <h1>Vos fenêtre</h1>
-                <h2>Vous avez <?= $nbre_fenetre ?> à votre disposition</h2>
-                <table border="1">
-                    <tr>
-                        <th>Numéro_de_série</th>
-                        <th>couleur</th>
-                        <th>ouverture</th>
-                        <th>fermeture</th>
-                        <th>alerte</th>
-                    </tr>
-                    <?php
-
-                    while ($ligne = $result->fetch(PDO::FETCH_NUM)) {
-                        echo "<tr>";
-                        foreach ($ligne as $valeur) {
-                            echo "<td>$valeur</td>";
-                        }
-                        echo "</tr>";
-                    }
-                    ?>
-                </table>
-            </div>
-            <?php
-            $result->closeCursor();
-
-        }
-    } elseif ($verification == "michel") {
-// On récupere les données de la fenêtre
-        $req = 'SELECT numero_de_serie, couleur, ouvert, fermer, alerte FROM fenetre_utilisateur LIMIT 6,7';
-        $result = $bddPDO->query($req);
-        if (!$result) {
-            echo "La récupération des données à rencontrée un problème! ou vous n'avez pas de fenêtre(s) ";
-        } else {
-            $nbre_fenetre = $result->rowCount();
-            ?>
-            <div class="align-content-center">
-                <h1>Vos fenêtre</h1>
-                <h2>Vous avez <?= $nbre_fenetre ?> à votre disposition</h2>
-                <table border="1">
-                    <tr>
-                        <th>Numéro_de_série</th>
-                        <th>couleur</th>
-                        <th>ouverture</th>
-                        <th>fermeture</th>
-                        <th>alerte</th>
-                    </tr>
-                    <?php
-
-                    while ($ligne = $result->fetch(PDO::FETCH_NUM)) {
-                        echo "<tr>";
-                        foreach ($ligne as $valeur) {
-                            echo "<td>$valeur</td>";
-                        }
-                        echo "</tr>";
-                    }
-                    ?>
-                </table>
-            </div>
-            <?php
-            $result->closeCursor();
-
-        }
-    }
-} else {
-    echo "vous etes pauvre";
-}
-?>
-
-<?php
-$req = "SELECT id_fenetre\n"
+$id = $data['id'];
+$req = "SELECT  id_fenetre, couleur, fermer, ouvert, alerte\n"
 
     . "FROM fenetre_utilisateurs\n"
 
-    . "INNER JOIN utilisateurs\n"
+    . "LEFT JOIN utilisateurs\n"
 
-    . "ON fenetre_utilisateurs.id_fenetre = utilisateurs.id";
+    . "ON fenetre_utilisateurs.id = utilisateurs.id\n"
+
+    . "WHERE fenetre_utilisateurs.id_fenetre = $id;";
 $req = "SELECT id_fenetre FROM fenetre_utilisateurs WHERE id = 10";
 $result = $bddPDO->query($req);
 if (!$result) {
