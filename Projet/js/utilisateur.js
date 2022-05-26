@@ -1,9 +1,9 @@
-/*  clock */
+/*  horloge */
 const hours = document.querySelector('.hours');
 const minutes = document.querySelector('.minutes');
 const seconds = document.querySelector('.seconds');
 
-/*  play button */
+/* bouton jouer */
 const play = document.querySelector('.play');
 const pause = document.querySelector('.pause');
 const playBtn = document.querySelector('.circle__btn');
@@ -22,15 +22,15 @@ clock = () => {
   let m = today.getMinutes(); // 0 - 59
   let s = today.getSeconds(); // 0 - 59
 
-  h *= 30; // 12 * 30 = 360deg
+  h *= 30; // 12 * 30 = 360degre
   m *= 6;
-  s *= 6; // 60 * 6 = 360deg
+  s *= 6; // 60 * 6 = 360degre
 
   rotation(hours, h);
   rotation(minutes, m);
   rotation(seconds, s);
 
-  // call every second
+  // appelle toutes les secondes
   setTimeout(clock, 500);
 }
 
@@ -56,17 +56,17 @@ dragElement = (target, btn) => {
       btn.x = x - 10;
       btn.style.left = btn.x + 'px';
 
-      // get the position of the button inside the container (%)
+      // orend la position pour ensuite afficher le %
       let percentPosition = (btn.x + 10) / targetRect.width * 100;
       
-      // color width = position of button (%)
+      // couleur width (largeur) = % de sa positions 
       color.style.width = percentPosition + "%";
 
-      // move the tooltip when button moves, and show the tooltip
+      
       tooltip.style.left = btn.x - 5 + 'px';
       tooltip.style.opacity = 1;
 
-      // show the percentage in the tooltip
+      
       tooltip.textContent = Math.round(percentPosition) + '%';
   };
 
@@ -86,7 +86,7 @@ dragElement = (target, btn) => {
 
 dragElement(container, btn);
 
-/*  play button  */
+/*  bouton jouer  */
 playBtn.addEventListener('click', function(e) {
   e.preventDefault();
   pause.classList.toggle('visibility');
