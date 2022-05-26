@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+
+    <title>Bac à sable</title>
+
+    <link href="../styles/generateur-mdp.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div id="password-generator">
+
+    <input id="password-output" value="Générateur de MDP">
+
+    <div class="range">
+        <input
+                id="password-length"
+                max="24"
+                min="4"
+                oninput="document.getElementById('display-password-length').value=this.value"
+                step="1"
+                type="range"
+                value="8"
+        >
+        <input
+                id="display-password-length"
+                maxlength="2"
+                oninput="document.getElementById('password-length').value=this.value"
+                type="text"
+                value="8"
+        >
+    </div>
+
+    <div class="flex">
+        <input checked="checked" id="lowercase" type="checkbox">
+        <label for="lowercase">a-z</label>
+
+        <input id="uppercase" type="checkbox">
+        <label for="uppercase">A-Z</label>
+
+        <input id="numbers" type="checkbox">
+        <label for="numbers">0-9</label>
+
+        <input id="symbols" type="checkbox">
+        <label for="symbols">!-?</label>
+    </div>
+
+    <button id="generateButton" onclick="generatePassword()" type="button">Générer mot de passe</button>
+
+</div>
+
+
+<script src="JS-password-generator-master/assets/jquery.min.js" type="text/javascript"></script>
+<script src="JS-password-generator-master/assets/bootstrap.js" type="text/javascript"></script>
+<script src="../js/genarateur-mdp.js" type="text/javascript"></script>
+</body>
+
+
+</html>

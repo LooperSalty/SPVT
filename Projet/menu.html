@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"/>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link href="./styles/menu.css" rel="stylesheet"/>
+    <link href="./styles/style1.css" rel="stylesheet">
+    <meta content="menu s'adaptant en fonction de la taille de l'écran " name="description"/>
+    <meta content="all" name="Robots"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <link href="./styles/default.css" rel="stylesheet" type="text/css"/>
+    <link href="./styles/component.css" rel="stylesheet" type="text/css"/>
+
+    <script src="js/effet-souris-menu.js"></script>
+</head>
+<body>
+
+
+<a class="neon-button" href="produit.html">Voir Produit</a>
+<link href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="container">
+    <div class="main clearfix">
+        <nav class="nav" id="menu">
+            <ul>
+                <li>
+                    <a href="#">
+						<span class="icon">
+							<i aria-hidden="true" class="icon-home"></i>
+						</span>
+                        <span>Accueil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Fiche-technique.html">
+						<span class="icon">
+							<i aria-hidden="true" class="icon-services"></i>
+						</span>
+                        <span>Fiches Technique</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="multimenu.html">
+						<span class="icon">
+							<i aria-hidden="true" class="icon-portfolio"></i>
+						</span>
+                        <span>Diaporama</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="produit.html">
+						<span class="icon">
+							<i aria-hidden="true" class="icon-blog"></i>
+						</span>
+                        <span>Produit</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+						<span class="icon">
+							<i aria-hidden="true" class="icon-team"></i>
+						</span>
+                        <span>L'équipe</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="aide.html">
+						<span class="icon">
+							<i aria-hidden="true" class="icon-contact"></i>
+						</span>
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<script>
+    //  Changement de class
+    var changeClass = function (r, className1, className2) {
+        var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
+        if (regex.test(r.className)) {
+            r.className = r.className.replace(regex, ' ' + className2 + ' ');
+        } else {
+            r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"), ' ' + className1 + ' ');
+        }
+        return r.className;
+    };
+    //  Creation du bouton pour écran plus petit
+    var menuElements = document.getElementById('menu');
+    menuElements.insertAdjacentHTML('afterBegin', '<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
+    //  Affichage / fermeture du menu
+    document.getElementById('menutoggle').onclick = function () {
+        changeClass(this, 'navtoogle active', 'navtoogle');
+    }
+
+    document.onclick = function (e) {
+        var mobileButton = document.getElementById('menutoggle'),
+            buttonStyle = mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
+        if (buttonStyle === 'block' && e.target !== mobileButton && new RegExp(' ' + 'active' + ' ').test(' ' + mobileButton.className + ' ')) {
+            changeClass(mobileButton, 'navtoogle active', 'navtoogle');
+        }
+    }
+</script>
+<div class="icon1">
+    <img src="https://img.icons8.com/material/96/000000/id-verified.png"/>
+</div>
+<div class="text1">
+    <p>Créer votre Compte dès maintenant!</p>
+</div>
+<div class="text2">
+    <p1>Bienvenue sur le site internet de la SPVT !</p1>
+</div>
+<a class="action-button" href="appweb/index.php">
+    Connexion
+</a>
+<div class="img1">
+    <img height="200" src="./images/fenetre.jpg" width="300">
+</div>
+<div class="text3">
+    <p2>GAGNER DU TEMPS !</p2>
+</div>
+<div class="text4">
+    <p3>Grâce à notre fenêtre automatique,<br>
+        Vous pouvez gagner du temps en<br>
+        télécommandant à distance la fenêtre.
+    </p3>
+</div>
+<div class="img2">
+    <img height="300" src="./images/bluetooth%20image.png" width="200">
+</div>
+<div class="text5">
+    <li>Portée 10m !</li>
+</div>
+<div class="text6">
+    <li>Bluetooth classe 2</li>
+</div>
+<!-- /espace du i car le point du i n'apparassait pas a cause du f -->
+<div class="text17">
+    <li>Wif i</li>
+</div>
+<div class="img9">
+    <img height="150" src="./images/wifi(2).png" width="150">
+</div>
+<div class="img3">
+    <img height="150" src="./images/raspberry.png" width="150">
+</div>
+<div class="text7">
+    <p4>RESTER EN S&Eacute;CURIT&Eacute; !</p4>
+</div>
+<div class="text8">
+    <li>Nous avons conçu cette fenêtre automatique en nous appuyant sur la sécurité</li>
+</div>
+<div class="text9">
+    <li>mais aussi pour votre confort</li>
+</div>
+<div class="text10">
+    <p5>T&Eacute;L&Eacute;COMMANDER VOTRE</p5>
+</div>
+<div class="text11">
+    <p6> FENÊTRE GRÂCE</p6>
+</div>
+<div class="text12">
+    <p7>A VOTRE SMARTPHONE</p7>
+</div>
+<div class="img4">
+    <img height="200px" src="./images/téléphone%20à%20la%20main%201.png" width="200px">
+</div>
+<div class="text13">
+    <p8>Télécharger dès maintenant <br>l'application mobile !</p8>
+</div>
+<div class="img5">
+    <img height="200px" src="./images/barrière%20de%20feuille%201.png" width="600px">
+</div>
+<div class="text14">
+    <p9>Besoin d'aide ?</p9>
+</div>
+<div class="img6">
+    <img height="200px" src="./images/barrière%20de%20feuille%201.png" width="600px">
+</div>
+<div class="img7">
+    <img height=200px src="./images/fleche11.png" width=200px>
+</div>
+<div class="text15">
+    <p10>voir les questions fréquentes</p10>
+</div>
+<div class="text16">
+    <p11>Pour plus de questions dirigées vous dans "Contact".</p11>
+</div>
+<div class="img8">
+    <img height="400px" src="./images/fleche%20vers%20le%20bas%201.png" width="400px">
+</div>
+<div class="btn-12">
+    <a href="aide.html">
+        <button class="custom-btn btn-12"><span>Cliquer!</span><span>Besoin d'aide?</span></button>
+    </a>
+</div>
+
+</body>
+
+</html>
