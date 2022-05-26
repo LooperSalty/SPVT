@@ -10,7 +10,7 @@ const playBtn = document.querySelector('.circle__btn');
 const wave1 = document.querySelector('.circle__back-1');
 const wave2 = document.querySelector('.circle__back-2');
 
-/*  rate slider */
+/*  curseur de taux de % */
 const container = document.querySelector('.slider__box');
 const btn = document.querySelector('.slider__btn');
 const color = document.querySelector('.slider__color');
