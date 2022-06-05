@@ -1,0 +1,40 @@
+body {
+    background-image: url("../images/couleur-degrader.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bouton {
+    padding: 15px;
+    border: none;
+    border-radius: 2rem;
+    font-size: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #1a13da;
+    display: inline-block;
+    margin: 4px 2px;
+}
+
+.boutonafficher {
+    top: -60px;
+    position: relative;
+}
+
+#divacacher {
+    top: -60px;
+    position: relative;
+}
+
+.bouton1 {
+    padding: 15px;
+    border: none;
+    border-radius: 2rem;
+    font-size: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #1a13da;
+    display: inline-block;
+    margin: 4px 2px;
+
+}
